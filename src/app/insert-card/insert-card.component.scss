@@ -1,0 +1,19 @@
+.insert-card {
+  display: flex;
+  flex-direction: column;
+  &__topbar {
+    height: 33vh;
+    background-color: #4bde95;
+
+    &--back {
+      float: left;
+      margin-left: 1.2rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
