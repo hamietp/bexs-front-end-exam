@@ -1,6 +1,7 @@
 # BexsFrontEndExam
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.  
+Original README.md for reference: [Bexstech](https://bitbucket.org/bexstech/bexs-front-end-exam/src/master/README.md)
 
 ## Development server
 
