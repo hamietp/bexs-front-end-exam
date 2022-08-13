@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./insert-card.component.scss']
 })
 export class InsertCardComponent implements OnInit {
+  public assetsPath = '../../assets/';
 
   constructor() { }
 

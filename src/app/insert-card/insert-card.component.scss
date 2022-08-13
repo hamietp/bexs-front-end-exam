@@ -1,13 +1,23 @@
 .insert-card {
+  font-family: "Lato", "Helvetica Neue", sans-serif;
+
   display: flex;
   flex-direction: column;
+
   &__topbar {
+    padding-top: 2.5rem;
     height: 33vh;
     background-color: #4bde95;
 
     &--back {
-      float: left;
-      margin-left: 1.2rem;
+      position: absolute;
+
+      mat-icon {
+        margin-left: 1.2rem;
+        color: #fff;
+        font-size: 1.3rem;
+        // float: left;
+      }
     }
   }
 
@@ -15,5 +25,40 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    font-size: 13px;
+    line-height: 1rem;
+    text-align: center;
+
+    &--step {
+      line-height: 1rem;
+      color: #fff;
+
+      .bold {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__new-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 2rem 3.2rem;
+
+    &--text {
+      margin-left: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 19px;
+      overflow: wrap;
+
+      color: #fff;
+    }
+
+    &--icon {
+      height: 2.5rem;
+    }
   }
 }
