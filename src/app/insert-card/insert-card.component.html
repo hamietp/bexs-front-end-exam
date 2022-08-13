@@ -17,5 +17,58 @@
         Adicione um novo cartão de crédito
       </div>
     </div>
+    <div class="insert-card__card-element">
+      <div class="insert-card__card-element--flag">flag</div>
+      <div class="insert-card__card-element--number">
+        {{ cardNumber }}
+      </div>
+      <div class="insert-card__card-element--bottom">
+        <div class="insert-card__card-element--holder-name">
+          NOME DO TITULAR
+        </div>
+        <div class="insert-card__card-element--exp-date">00/00</div>
+      </div>
+    </div>
+  </div>
+  <div class="insert-card__form">
+    <form>
+      <div class="insert-card__form--input">
+        <mat-form-field>
+          <input matInput placeholder="Número do cartão" />
+        </mat-form-field>
+      </div>
+      <div class="insert-card__form--input">
+        <mat-form-field>
+          <input matInput placeholder="Nome (igual ao cartão)" />
+        </mat-form-field>
+      </div>
+
+      <div class="insert-card__form--input-group">
+        <mat-form-field>
+          <input matInput placeholder="Validade" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>CVV <mat-icon>info</mat-icon></mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <div class="insert-card__form--input">
+        <mat-form-field>
+          <mat-label>Número de parcelas</mat-label>
+          <mat-select>
+            <mat-option
+              [value]="element"
+              *ngFor="let element of paymentTerm | slice: 1; let i = index"
+              >{{ element }}x {{ paymentValue / element | currency: "BRL" }} sem
+              juros</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <button class="insert-card__form--submit">Continuar</button>
+      </div>
+    </form>
   </div>
 </div>
