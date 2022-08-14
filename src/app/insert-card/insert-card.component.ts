@@ -42,26 +42,10 @@ export class InsertCardComponent implements OnInit {
   expDateMask = [/\d/, /\d/, '/', /\d/, /\d/];
   cvvMask = [/\d/, /\d/, /\d/];
   numMask = [
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    ' ',
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    ' ',
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    ' ',
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-    /[0-9]/,
-  ];
+    /[0-9]/,/[0-9]/,/[0-9]/,/[0-9]/,' ',
+    /[0-9]/,/[0-9]/,/[0-9]/,/[0-9]/,' ',
+    /[0-9]/,/[0-9]/,/[0-9]/,/[0-9]/,' ',
+    /[0-9]/,/[0-9]/,/[0-9]/,/[0-9]/,];
 
   constructor(private formBuilder: FormBuilder,
     private paymentService: PaymentHandlerService) {
@@ -141,6 +125,5 @@ export class InsertCardComponent implements OnInit {
       };
 
     this.paymentService.post(apiPostObject);
-
   }
 }
