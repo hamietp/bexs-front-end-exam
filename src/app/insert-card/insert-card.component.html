@@ -17,8 +17,17 @@
         Adicione um novo cartão de crédito
       </div>
     </div>
-    <div class="insert-card__card-element">
-      <div class="insert-card__card-element--flag">flag</div>
+    <div
+      class="insert-card__card-element"
+      [ngClass]="{ 'insert-card__card-element--visa': getIssuer() !== 'nocard' }"
+    >
+      <div class="insert-card__card-element--flag">
+        <img
+          *ngIf="getIssuer() !== 'nocard'"
+          src="{{ assetsPath }}icons/{{ getIssuer() }}.png"
+          class="insert-card__card-element--icon"
+        />
+      </div>
       <div class="insert-card__card-element--number">
         {{
           this.cardNumber.value.length === 0
@@ -59,7 +68,7 @@
             [textMask]="{ mask: numMask, guide: false }"
             required
           />
-          <mat-error *ngIf="!getIssuerError()"
+          <mat-error *ngIf="this.cardNumber"
             >Número de cartão inválido</mat-error
           >
         </mat-form-field>

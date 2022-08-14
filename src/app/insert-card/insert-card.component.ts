@@ -26,6 +26,22 @@ export class InsertCardComponent implements OnInit {
   cardPlaceholderNumber = '**** **** **** ****';
   cardPlaceholderName = 'NOME DO TITULAR';
   cardPlaceholderExpDate = '00/00';
+  cardDefaultBackground = `radial-gradient(
+    73.06% 104.31% at 14.59% 58.06%,
+    #bfbfbf 0%,
+    #bfbfbf 0.01%,
+    #a8a8a8 33.7%,
+    #727272 100%
+  );`;
+
+  cardCustomBackground = `radial-gradient(
+    73.06% 104.31% at 14.59% 58.06%,
+    #5a7589 0%,
+    #436175 33.7%,
+    #315266 57.29%,
+    #124768 100%
+  );
+`;
 
   cardForm = new FormGroup({
     cardNumber: new FormControl(),
@@ -75,29 +91,34 @@ export class InsertCardComponent implements OnInit {
       cardHolderName: ['', Validators.required],
       cardExpirationDate: ['', Validators.required],
       cardCvv: ['', Validators.required],
-      formPaymentTerms: ['', Validators.required],      
+      formPaymentTerms: ['', Validators.required],
     });
   }
 
-  getIssuerError(): boolean {
+  getColor() {
+    return this.getIssuer() ==='visa' ?
+      this.cardCustomBackground : this.cardDefaultBackground;
+  }
+
+  getIssuer(): CardBrandEnum {
     let valueAccessor = this.cardForm.get('cardNumber')!.value;
     this.issuerDigits = valueAccessor.substring(0, 4);
 
     switch (this.issuerDigits) {
       default:
-        return false;
+        return CardBrandEnum.NOCARD;
       case '4111':
         this.cardIssuer = CardBrandEnum.VISA;
-        return true;
+        return CardBrandEnum.VISA;
       case '4012':
         this.cardIssuer = CardBrandEnum.VISA;
-        return true;
+        return CardBrandEnum.VISA;
       case '5105':
         this.cardIssuer = CardBrandEnum.MASTERCARD;
-        return true;
+        return CardBrandEnum.MASTERCARD;
       case '5555':
         this.cardIssuer = CardBrandEnum.MASTERCARD;
-        return true;
+        return CardBrandEnum.MASTERCARD;
     }
   }
 }
