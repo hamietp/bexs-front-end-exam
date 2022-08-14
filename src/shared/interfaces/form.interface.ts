@@ -3,4 +3,7 @@ export interface CardFormInterface {
     cardHolderName: string;
     cardExpirationDate: string;
     cardCvv: number;
+    formPaymentTerms: number;
+    formPaymentValue: number;
+    monthlyPayment: number;
 }

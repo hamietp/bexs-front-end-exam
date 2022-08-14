@@ -25,4 +25,8 @@ describe('InsertCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form should not be empty', () => {
+    expect(component.cardForm.valid).toBeTruthy();
+  });
 });
