@@ -56,7 +56,7 @@
   <div class="insert-card__form">
     <form [formGroup]="cardForm">
       <div class="insert-card__form--input">
-        <mat-form-field hideRequiredMarker="true">
+        <mat-form-field hideRequiredMarker="true" appearance="legacy">
           <input
             matInput
             #cardNumber
@@ -74,7 +74,7 @@
         </mat-form-field>
       </div>
       <div class="insert-card__form--input">
-        <mat-form-field hideRequiredMarker="true">
+        <mat-form-field hideRequiredMarker="true" appearance="legacy">
           <input
             matInput
             #cardHolder
@@ -92,7 +92,7 @@
       </div>
 
       <div class="insert-card__form--input-group">
-        <mat-form-field hideRequiredMarker="true">
+        <mat-form-field hideRequiredMarker="true" id="inputGroup">
           <input
             matInput
             #cardExpiration
@@ -131,12 +131,11 @@
               juros</mat-option
             >
           </mat-select>
-          <mat-error *ngIf="this.term">Código inválido</mat-error>
+          <mat-icon matSuffix class="expand">expand_more</mat-icon>
+          <mat-error *ngIf="this.term">Insira o número de parcelas</mat-error>
         </mat-form-field>
       </div>
-      <div class="row">
-        <button class="insert-card__form--submit">Continuar</button>
-      </div>
     </form>
+    <button type="submit" class="insert-card__form--submit">Continuar</button>
   </div>
 </div>

@@ -26,22 +26,8 @@ export class InsertCardComponent implements OnInit {
   cardPlaceholderNumber = '**** **** **** ****';
   cardPlaceholderName = 'NOME DO TITULAR';
   cardPlaceholderExpDate = '00/00';
-  cardDefaultBackground = `radial-gradient(
-    73.06% 104.31% at 14.59% 58.06%,
-    #bfbfbf 0%,
-    #bfbfbf 0.01%,
-    #a8a8a8 33.7%,
-    #727272 100%
-  );`;
-
-  cardCustomBackground = `radial-gradient(
-    73.06% 104.31% at 14.59% 58.06%,
-    #5a7589 0%,
-    #436175 33.7%,
-    #315266 57.29%,
-    #124768 100%
-  );
-`;
+  cardDefaultBackground = ``;
+  cardCustomBackground = ``;
 
   cardForm = new FormGroup({
     cardNumber: new FormControl(),
@@ -96,6 +82,22 @@ export class InsertCardComponent implements OnInit {
   }
 
   getColor() {
+    this.cardDefaultBackground = `radial-gradient(
+      73.06% 104.31% at 14.59% 58.06%,
+      #bfbfbf 0%,
+      #bfbfbf 0.01%,
+      #a8a8a8 33.7%,
+      #727272 100%
+    );`;
+  
+    this.cardCustomBackground = `radial-gradient(
+      73.06% 104.31% at 14.59% 58.06%,
+      #5a7589 0%,
+      #436175 33.7%,
+      #315266 57.29%,
+      #124768 100%
+    );
+  `;
     return this.getIssuer() ==='visa' ?
       this.cardCustomBackground : this.cardDefaultBackground;
   }
