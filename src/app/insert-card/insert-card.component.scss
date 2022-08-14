@@ -329,6 +329,8 @@
     @media screen and (min-width: 1400px) {
       margin: 0;
       margin-left: clamp(5%, 17%, 20%);
+      top: 15%;
+
       transition: all 0.25s linear;
       -o-transition: all 0.25s linear;
       -moz-transition: all 0.25s linear;
@@ -368,7 +370,10 @@
     }
 
     &--input-group {
-      // width: 75vw;
+      mat-icon {
+        position: relative;
+        bottom: -3px;
+      }
 
       @media screen and (min-width: 1025px) {
         width: clamp(85%, 119%, 150%);
