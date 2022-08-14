@@ -20,7 +20,6 @@ export class InsertCardComponent implements OnInit {
 
   paymentTerm: Array<number> = [];
   paymentValue = 12000;
-  cardnum = '';
   cardIssuer!: CardBrandEnum;
   issuerDigits = '';
 
@@ -33,6 +32,7 @@ export class InsertCardComponent implements OnInit {
     cardHolderName: new FormControl(),
     cardExpirationDate: new FormControl(),
     cardCvv: new FormControl(),
+    formPaymentTerms: new FormControl(),
   });
 
   expDateMask = [/\d/, /\d/, '/', /\d/, /\d/];
@@ -75,33 +75,29 @@ export class InsertCardComponent implements OnInit {
       cardHolderName: ['', Validators.required],
       cardExpirationDate: ['', Validators.required],
       cardCvv: ['', Validators.required],
+      formPaymentTerms: ['', Validators.required],      
     });
   }
 
-  updateCard() {
+  getIssuerError(): boolean {
     let valueAccessor = this.cardForm.get('cardNumber')!.value;
-    valueAccessor = this.cardnum
-      .split(new RegExp(`[${blank}\s]+`, 'ig'))
-      .join('');
-
     this.issuerDigits = valueAccessor.substring(0, 4);
 
     switch (this.issuerDigits) {
+      default:
+        return false;
       case '4111':
         this.cardIssuer = CardBrandEnum.VISA;
-        break;
+        return true;
       case '4012':
         this.cardIssuer = CardBrandEnum.VISA;
-        break;
+        return true;
       case '5105':
         this.cardIssuer = CardBrandEnum.MASTERCARD;
-        break;
+        return true;
       case '5555':
         this.cardIssuer = CardBrandEnum.MASTERCARD;
-        break;
-      default:
-        this.cardIssuer = CardBrandEnum.NOCARD;
-        break;
+        return true;
     }
   }
 }

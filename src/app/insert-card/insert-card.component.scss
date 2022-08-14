@@ -141,6 +141,7 @@
     &--input {
       display: flex;
       flex-direction: column;
+      margin-top: 0.5rem;
 
       .mat-form-field {
         font-size: 1rem;
@@ -180,4 +181,13 @@
 
 ::ng-deep .mat-form-field-empty.mat-form-field-label {
   color: #C6C6C6;
+}
+
+::ng-deep .mat-select, .mat-option {
+  font-family: "Lato", sans-serif;
+}
+
+::ng-deep .mat-error {
+  font-size: 11px;
+  margin-bottom: 0.5rem;
 }
