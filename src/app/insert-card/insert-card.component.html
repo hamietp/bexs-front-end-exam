@@ -20,36 +20,88 @@
     <div class="insert-card__card-element">
       <div class="insert-card__card-element--flag">flag</div>
       <div class="insert-card__card-element--number">
-        {{ cardNumber }}
+        {{ this.cardNumber.value.length === 0 ? 
+          cardPlaceholderNumber
+          : this.cardNumber.value }}
       </div>
       <div class="insert-card__card-element--bottom">
         <div class="insert-card__card-element--holder-name">
-          NOME DO TITULAR
+          {{
+            this.cardHolder.value.length === 0
+              ? cardPlaceholderName
+              : this.cardHolder.value
+          }}
         </div>
-        <div class="insert-card__card-element--exp-date">00/00</div>
+        <div class="insert-card__card-element--exp-date">{{
+          this.cardExpiration.value.length === 0
+            ? cardPlaceholderExpDate
+            : this.cardExpiration.value
+          }}</div>
       </div>
     </div>
   </div>
   <div class="insert-card__form">
-    <form>
+    <form [formGroup]="cardForm">
       <div class="insert-card__form--input">
         <mat-form-field>
-          <input matInput placeholder="Número do cartão" />
+          <input
+            matInput
+            #cardNumber
+            type="text"
+            maxlength="20"
+            placeholder="Número do cartão"
+            formControlName="cardNumber"
+            pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}"
+            [(ngModel)]="cardnum"
+            [textMask]="{mask: numMask}"
+            (keyup)="updateCard()"
+            required
+          />
+          <!-- <mat-error *ngIf="cardIssuer === 'nocard'"
+            >Número de cartão inválido</mat-error
+          > -->
         </mat-form-field>
       </div>
       <div class="insert-card__form--input">
         <mat-form-field>
-          <input matInput placeholder="Nome (igual ao cartão)" />
+          <input
+            matInput
+            #cardHolder
+            formControlName="cardHolderName"
+            placeholder="Nome (igual ao cartão)"
+            required
+            maxlength="22"
+          />
+          <!-- <mat-error *ngIf="cardHolderName.invalid"
+            >Insira seu nome completo</mat-error
+          > -->
         </mat-form-field>
       </div>
 
       <div class="insert-card__form--input-group">
         <mat-form-field>
-          <input matInput placeholder="Validade" />
+          <input
+            matInput
+            #cardExpiration
+            formControlName="cardExpirationDate"
+            placeholder="Validade"
+            [textMask]="{mask: expDateMask}"
+            maxlength="6"
+            pattern="[0-9]{2}\/[0-9]{2}"
+            required
+          />
+          <!-- <mat-error *ngIf="cardExpirationDate.invalid"
+            >Data Inválida</mat-error
+          > -->
         </mat-form-field>
         <mat-form-field>
           <mat-label>CVV <mat-icon>info</mat-icon></mat-label>
-          <input matInput />
+          <input matInput formControlName="cardCvv"
+          [textMask]="{mask: cvvMask}"
+          maxlength="3" required />
+          <!-- <mat-error *ngIf="cardForm.get('cardCvv').value.invalid"
+            >Insira seu nome completo</mat-error
+          > -->
         </mat-form-field>
       </div>
 
